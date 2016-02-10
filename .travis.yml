@@ -8,26 +8,23 @@ go:
 env:
   global:
     - GO_VENDOR_PATH=$HOME/gopath_vendor_${TRAVIS_GO_VERSION}
-    - GOPATH=${GO_VENDOR_PATH}:${GOPATH}
-    - PATH=${GO_VENDOR_PATH}/bin:${PATH}
-
-install:
-     - mkdir -p $GO_VENDOR_PATH
-     - go get -t -v ./...
 
 before_install:
+  - export PATH=${GO_VENDOR_PATH}/bin:${PATH}
+  - export GOPATH=${GO_VENDOR_PATH}:${GOPATH}
   - go get -v golang.org/x/tools/cmd/vet
   - go get -v golang.org/x/tools/cmd/cover
-  - GOPATH=${GO_VENDOR_PATH}:${GOPATH} go get -v github.com/golang/lint/golint
+  - go get -v github.com/golang/lint/golint
 
 install:
+  - mkdir -p $GO_VENDOR_PATH
   - go install -race -v std
   - go get -race -t -v ./...
   - go install -race -v ./...
 
 script:
   - go vet ./...
-  - ${GO_VENDOR_PATH}/bin/golint .
+  - golint .
   - go test -cpu=2 -race -v ./...
   - go test -cpu=2 -covermode=atomic ./...
 
