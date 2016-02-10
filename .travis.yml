@@ -1,0 +1,36 @@
+sudo: false
+language: go
+
+go:
+  - 1.4
+  - tip
+
+env:
+  global:
+    - GO_VENDOR_PATH=$HOME/gopath_vendor
+    - GOPATH=${GO_VENDOR_PATH}:${GOPATH}
+    - PATH=${GO_VENDOR_PATH}/bin:${PATH}
+
+install:
+     - mkdir -p $GO_VENDOR_PATH
+     - go get -t -v ./...
+
+before_install:
+  - go get -v golang.org/x/tools/cmd/vet
+  - go get -v golang.org/x/tools/cmd/cover
+  - go get -v github.com/golang/lint/golint
+
+install:
+  - go install -race -v std
+  - go get -race -t -v ./...
+  - go install -race -v ./...
+
+script:
+  - go vet ./...
+  - $GO_VENDOR_PATH/bin/golint .
+  - go test -cpu=2 -race -v ./...
+  - go test -cpu=2 -covermode=atomic ./...
+
+cache:
+  directories:
+    - ${GO_VENDOR_PATH}
