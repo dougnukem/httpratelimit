@@ -18,6 +18,7 @@ before_install:
 
 install:
   - mkdir -p $GO_VENDOR_PATH
+  - echo $GOPATH
   - go install -race -v std
   - go get -race -t -v ./...
   - go install -race -v ./...
