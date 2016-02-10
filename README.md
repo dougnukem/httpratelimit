@@ -1,4 +1,4 @@
-# httpratelimit [![Build Status](https://travis-ci.org/dougnukem/httpratelimit.png)](https://travis-ci.org/dougnukem/httpratelimit) [![Coverage](https://gocover.io/_badge/github.com/dougnukem/httpratelimit)](https://gocover.io/github.com/dougnukem/httpratelimit) [![GoDoc](https://godoc.org/github.com/dougnukem/httpratelimit?status.png)](https://godoc.org/github.com/dougnukem/httpratelimit)
+# httpratelimit [![Build Status](https://travis-ci.org/dougnukem/httpratelimit.png)](https://travis-ci.org/dougnukem/httpratelimit) [![Coverage](https://gocover.io/_badge/github.com/dougnukem/httpratelimit#cacheBuster123)](https://gocover.io/github.com/dougnukem/httpratelimit#cacheBuster123) [![GoDoc](https://godoc.org/github.com/dougnukem/httpratelimit?status.png)](https://godoc.org/github.com/dougnukem/httpratelimit)
 
 allows HTTP Transport supporting rate limiting policies
 
