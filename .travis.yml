@@ -5,11 +5,8 @@ go:
   - 1.4
   - tip
 
-env:
-  global:
-    - GO_VENDOR_PATH=$HOME/gopath_vendor_${TRAVIS_GO_VERSION}
-
 before_install:
+  - export GO_VENDOR_PATH=$HOME/gopath_vendor_${TRAVIS_GO_VERSION}
   - export PATH=${GO_VENDOR_PATH}/bin:${PATH}
   - export GOPATH=${GO_VENDOR_PATH}:${GOPATH}
   - go get -v golang.org/x/tools/cmd/vet
