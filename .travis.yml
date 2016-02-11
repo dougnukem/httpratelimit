@@ -6,7 +6,7 @@ go:
   - tip
 
 before_install:
-  - export GO_VENDOR_PATH=$HOME/gopath_vendor_${TRAVIS_GO_VERSION}
+  - export GO_VENDOR_PATH=$HOME/gopath_vendor
   - export PATH=${GO_VENDOR_PATH}/bin:${PATH}
   - export GOPATH=${GO_VENDOR_PATH}:${GOPATH}
   - go get -v golang.org/x/tools/cmd/vet
